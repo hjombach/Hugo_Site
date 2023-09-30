@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <!-- Header -->
+  {{ partial "header" . }}
+
+  <div class="container">
+    <section id="Publications">
+      <h4 class="my-5">{{ .Site.Data.publications.name }}</h4>
+      <div class="panel">
+        <div class="panel-body">
+          {{ range $el := .Site.Data.publications.source }}
+            <h5>
+              <!-- <i class="{{ .icon }}"></i>&nbsp;&nbsp; -->
+              <p> {{$el.first_authors}} <b>{{$el.me}}</b> {{$el.last_authors}} <a href="{{ .url }}">{{ $el.description }}</a></p>
+            </h5>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  </div>
+
+{{ end }}

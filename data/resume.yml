@@ -1,0 +1,16 @@
+name: Resume
+source:
+  - icon: fa fa-github
+    name: Project 1
+    description: Ei viderer tacimates pro, quem assum ea nam. Veritus omnesque eam te. Et natum mucius tamquam vel, ea dolorem volumus deterruisset nec. Graeci mentitum sea an, eu prima elaboraret est.
+    url: https://github.com/nurlansu/hugo-sustain
+
+  - icon: fa fa-github
+    name: Project s2
+    description: An eripuit phaedrum qui, nec facer splendide ex, vel ea assum facilisi convenire. Te his neglegentur consectetuer.
+    url: https://github.com/nurlansu/hugo-sustain
+    
+  - icon: fa fa-github
+    name: Project s4
+    description: An eripuit phaedrum qui, nec facer splendide ex, vel ea assum facilisi convenire. Te hisasdneglegentur consectetuer.
+    url: https://github.com/nurlansu/hugo-sustain

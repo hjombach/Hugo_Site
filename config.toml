@@ -1,0 +1,58 @@
+baseURL = "https://hjombach.com/"
+languageCode = "en-US"
+title = "Hendrik (Jake) Ombach"
+# Enable comments by entering your Disqus shortname
+disqusShortname = ""
+# Enable Google Analytics by entering your tracking code
+googleAnalytics = ""
+theme = "hugo-sustain"
+
+[permalinks]
+  post = "/:year/:month/:day/:slug"
+
+[params]
+  avatar = "img/profile_pic.png"
+  author = "Hendrik (Jake) Ombach"
+  description = "Northeastern University\nMasters in Data Science 2022"
+
+  # Custom assets can be linked with their paths relative to static/
+  custom_css = []
+  custom_js  = []
+
+[params.social]
+  Github        = "hjombach"
+  Email         = "hendrik.ombach@gmail.com"
+#  Twitter       = "username"
+  LinkedIn      = "hjombach"
+#  Stackoverflow = "username"
+#  Medium        = "username"
+#  Telegram      = "username"
+#  RSS           = "/blog/index.xml"
+
+## Main Menu
+
+[[menu.main]]
+  name = "data science projects"
+  identifier = "projects"
+  weight = 200
+  url = "/projects/"
+[[menu.main]]
+  name = "publications"
+  weight = 250
+  identifier = "publications"
+  url = "/publications/"
+[[menu.main]]
+  name = "resume"
+  identifier = "resume"
+  weight = 300
+  url = "/resume/"
+[[menu.main]]
+  name = "about me"
+  identifier = "about"
+  weight = 400
+  url = "/about/"
+[[menu.main]]
+  name = "photography"
+ identifier = "photography"
+ weight = 500
+ url = "/photography/"
