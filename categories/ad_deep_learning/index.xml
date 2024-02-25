@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ad_deep_learning on Hendrik (Jake) Ombach</title>
+    <link>https://hjombach.com/categories/ad_deep_learning/</link>
+    <description>Recent content in ad_deep_learning on Hendrik (Jake) Ombach</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 02 Oct 2016 22:55:05 -0400</lastBuildDate><atom:link href="https://hjombach.com/categories/ad_deep_learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alzheimer&#39;s Disease and Deep Learning</title>
+      <link>https://hjombach.com/ad_deep_learning/</link>
+      <pubDate>Sun, 02 Oct 2016 22:55:05 -0400</pubDate>
+      
+      <guid>https://hjombach.com/ad_deep_learning/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
