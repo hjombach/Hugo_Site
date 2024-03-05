@@ -82,7 +82,7 @@ Masters in Data Science 2022">
 </head>
 <html lang="en-us">
    <body>
-      <h4 style="text-align:center;"><br>Drug Repurposing for Alzheimer's Disease Using Graph Neural Networks (GNN)
+      <h4 style="text-align:center;"><br>Drug Repurposing for Alzheimer's Disease Using Graph Neural Networks
       </h4>
       <div class="container">
          <p style = "text-align:left;"><br>All analyses done using Python.</p>
@@ -118,13 +118,13 @@ Masters in Data Science 2022">
       <h4 style="text-align:center;">Graph Neural Networks</h4><br>
       <div class="container">
          <p style="text-align:justify;">
-            Graph Neural Networks (GNN) build on many of the features of Convolution Neural Networks (CNN) typically used on images. Graphs however serve as more flexible structures that handle variations in input data, in comparison to CNNs which largely work with fixed size image vectors (i.e. 64 x 64-pixel images). The ability to handle variable size inputs is essential for GNNs to fully evaluate molecules. Current small molecule drugs are as small as a single atom (i.e. Lithium) and grow upwards of 37 heavy atoms [5], providing an enormous-range of potential graph sizes and shapes.
+            Graph Convolution Neural Networks (GCN) build on many of the features of Convolution Neural Networks (CNN) typically used on images. Graphs however serve as more flexible structures that more easily handle variations in input data, in comparison to CNNs which largely work with fixed size image vectors (i.e. 64 x 64-pixel images). The ability to handle variable size inputs is essential for GCNs to fully evaluate molecules. Current small molecule drugs are as small as a single atom (i.e. Lithium) and grow upwards of 37 heavy atoms [5], providing an enormous-range of potential graph sizes and shapes.
             <br>
             <br>
-            Many different GNN architectures exist, but are often in general composed of input layers, hidden graph convolutional layers, pooling layers, and subsequent feed forward / fully connected layers to provide predicted outputs.
+            Many different GCN architectures exist, but are often in general composed of input layers, hidden graph convolutional layers, pooling layers, and subsequent feed forward / fully connected layers to provide predicted outputs.
             <br>
             <br>
-            The graph convolutional layers are one feature that makes GNN’s unique and especially useful. These layers lead to the model learning of expanded neighborhoods of atoms, known as message passing. As nodes are often only connected to a small subset of other nodes in the graph set, a single graph convolution layer only incorporates information from nodes a single step away. This is when multiple graph convolution layers become useful, as each additional layer allows the passing of information from one node “further”, enabling more distance nodes to influence the values of a node of interest deeper in the network.
+            The graph convolutional layers are one feature that makes GCN’s unique and especially useful. These layers lead to the model learning of expanded neighborhoods of atoms, known as message passing. As nodes are often only connected to a small subset of other nodes in the graph set, a single graph convolution layer only incorporates information from nodes a single step away. This is when multiple graph convolution layers become useful, as each additional layer allows the passing of information from one node “further”, enabling more distance nodes to influence the values of a node of interest deeper in the network.
             <br>
             <br>
             For a more explicit example, we can consider this in respect to the caffeine molecule in the image above. Each atom’s encoding will be updated at each layer of the network. When Carbon C:7 is updated in the first graph convolution layer, it will aggregate information from its adjacent neighbors, Oxygen O:8, Nitrogen N:9 and Carbon C:6. When the Nitrogen N:9 is updated, it will take aggregate data from Carbon C:10 and Carbon C:14. This will be done for each atom in the molecule to complete the first convolutional layer. In the second convolutional layer, when Carbon C:7 is aggregating information from its neighbors, information from the updated Nitrogen N:9 will represent the original Nitrogen atom, but with influence from its own adjacent neighbors, Carbons C:10 and C:14. Therefore, this convolutional layer led Carbon C:7 to learn from atoms another step further away than its immediate neighbors. As the number of convolutional layers increases, each layer increases the number atoms away that the updated value accounts for.
@@ -211,7 +211,7 @@ Masters in Data Science 2022">
             <br><br>
             The main framework used for development of the analyses was the DeepChem Python library [10]. DeepChem builds on top of PyTorch and Tensorflow deep learning models, making development easier for biological and chemical machine learning. DeepChem provides dozens of deep learning models and architectures that can be used for different classification and regression models.
             <br><br>
-            The GraphConvModel, built on top of a Keras Graph Convolution Neural Network Model, was the primary model used for this project. The GraphConvModel has a general architecture like that pictured below, composed of graph convolutional layers, max pooling, and ReLU activation functions. Prior to final predictions, a dense layer is used to generate logits for the model. The softmax activation function converts these logits into the class probabilities.
+            The GraphConvModel, built on top of a Keras Graph Convolution Neural Network Model, was the primary model used for this project. The GraphConvModel has a general architecture like that pictured below, composed of graph convolutional layers, max pooling, and ReLU activation functions. Prior to final probabilities, a dense layer is used to produce outputs based on the trained molecular embedding. The softmax activation function finally converts these outputs into the class probabilities.
             <br>
             <img src="/img/ad_deep_learning/gnn architecture.png" style="width:750px; border:0">
             RDKit, one of the most popular cheminformatics Python libraries, was used heavily throughout the project as well.
@@ -250,14 +250,14 @@ Masters in Data Science 2022">
             </li>
          </ul>
          <p style="text-align:justify">
-            Each target was tested with more than 100 combinations of the parameters for 50-150 epochs. Early stopping was performed if the models did not predict any active classifications after the 10th epoch. Fixed parameters of the models included the use of the Adam optimizer, a learning rate = 0.001, a classification threshold = 0.2 (> 0.2 probability = active classification) and the binary cross-entropy loss function. Initial testing indicated that a classification threshold of 0.2 led to better model performance than a standard 0.5 threshold, however variations in the threshold were not included in the final parameter tuning. The softmax activation function was used to calculate the probabilities of each compound being active or inactive against the target protein.
+            Each target was tested with more than 100 combinations of the parameters for 50-150 epochs. Early stopping was performed if the models did not predict any active classifications after the 10th epoch. Fixed parameters of the models included the use of the Adam optimizer, a learning rate = 0.001, a classification threshold = 0.2 (> 0.2 probability = active classification) and the binary cross-entropy loss function. The softmax activation function was used to calculate the probabilities of each compound being active or inactive against the target protein.
          </p>
       </div>
       <h4 style="text-align:center;"><br>Final Model – Outputs and Performance</h4>
       <div class="container">
          <p style="text-align:justify;">
             <br>
-            After extensive testing of various architectures, I chose the optimal architectures for the targets as follows. My primary metric of interest was precision, as I wanted to optimize hit rate and in-vitro screening efficiency, however recall was still important to ensure I wasn’t missing out on too many true positives either.
+            After extensive testing of various architectures, I chose the optimal architectures for the targets as follows. A prediction threshold of 0.2 was used for labeling compounds as active or inactive to calculate performance metrics. My primary metric of interest was precision, as I wanted to optimize hit rate and in-vitro screening efficiency, however recall was still important to ensure I wasn’t missing out on too many true positives either.
          </p>
       </div>
       <div style="max-width: 780px; margin: 0 auto; overflow: hidden; text-align:left;">
@@ -319,7 +319,7 @@ Masters in Data Science 2022">
                <b>Prediction Set</b><br>
                With the final architectures, the DrugBank data set was passed into the models. In total, 9,468 compounds are in the DrugBank dataset, although about 10% of these compounds are also included in the training data. After removing the DrugBank compounds in the training set, there were 8,334 remaining compounds.
                <br><br>
-               Using a probability of 0.2 as the threshold for activity, 494 compounds (85 approved) were predicted active for APP and 505 compounds (68 approved) for Tau.
+               Using the same 0.2 probability threshold for activity as done in training, 494 compounds (85 approved) were predicted active for APP and 505 compounds (68 approved) for Tau.
             </p>
             <br>
          </div>
